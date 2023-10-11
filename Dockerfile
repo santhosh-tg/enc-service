@@ -1,11 +1,7 @@
-FROM node:6.14.4
+FROM node:8-buster-slim
 MAINTAINER "S M Y ALTAMASH" "smy.altamash@gmail.com"
 WORKDIR /home/enc
 COPY . /home/enc
-# Update stretch repositories
-RUN sed -i -e 's/deb.debian.org/archive.debian.org/g' \
-           -e 's|security.debian.org|archive.debian.org/|g' \
-           -e '/stretch-updates/d' /etc/apt/sources.list
 RUN apt update \
     && apt install -y zip python make g++ \
     && npm i \
